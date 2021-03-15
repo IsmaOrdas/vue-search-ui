@@ -1,10 +1,21 @@
 <template>
 <div data-testid="search-results" class="search-results" v-bind:class="{'is-visible': showResults}">
   <div class="search-results__list-wrap">
-    <p class="search-results__title">Artists</p>
+    <p class="search-results__title">Albums</p>
     <ul data-testid="albums-list" class="search-results__list" v-if="hasAlbums">
-      <template v-for="(item, index) in searchResults.artists.items">
-        <li v-if="index <= 4" class="search-results__item flex flex--center-y" :key="index">
+      <template v-for="(item, index) in fiveResults('albums')">
+        <li class="search-results__item flex flex--center-y" :key="index">
+          <div class="search-results__img-wrap">
+            <img role="presentation" class="search-results__img" :src="item.images[imageIndex].url" alt="album cover">
+          </div>
+          <span>{{ item.name }}</span>
+        </li>
+      </template>
+    </ul>
+    <p class="search-results__title">Artists</p>
+    <ul class="search-results__list" v-if="hasArtists">
+      <template v-for="(item, index) in fiveResults('artists')">
+        <li class="search-results__item flex flex--center-y" :key="index">
           <div class="search-results__img-wrap">
             <img role="presentation" class="search-results__img" :src="item.images[imageIndex].url" alt="artist photo">
           </div>
@@ -12,21 +23,10 @@
         </li>
       </template>
     </ul>
-    <p class="search-results__title">Albums</p>
-    <ul class="search-results__list" v-if="hasArtists">
-      <template v-for="(item, index) in searchResults.albums.items">
-        <li v-if="index <= 4" class="search-results__item flex flex--center-y" :key="index">
-          <div class="search-results__img-wrap">
-            <img role="presentation" class="search-results__img" :src="item.images[2].url" alt="album cover">
-          </div>
-          <span>{{ item.name }}</span>
-        </li>
-      </template>
-    </ul>
     <p class="search-results__title">Tracks</p>
     <ul class="search-results__list" v-if="hasTracks">
-      <template v-for="(item, index) in searchResults.tracks.items">
-        <li v-if="index <= 4" class="search-results__item" :key="index">
+      <template v-for="(item, index) in fiveResults('tracks')">
+        <li class="search-results__item" :key="index">
           <span>{{ item.name }}</span>
           <time class="search-results__track-duration"> {{ formatTime(item.duration_ms) }}</time>
         </li>
@@ -52,6 +52,7 @@ export default {
     ...mapGetters([
       'searchResults',
       'showResults',
+      'fiveResults',
     ]),
     hasAlbums() {
       return this.searchResults && this.searchResults.albums ? Object.keys(this.searchResults.albums).length : null;

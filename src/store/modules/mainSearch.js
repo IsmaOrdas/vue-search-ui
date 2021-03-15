@@ -9,13 +9,18 @@ const state = {
 const getters = {
   searchResults: (state) => state.searchResults,
   showResults: (state) => state.showResults,
+  fiveResults: (state) => (type) => {
+    if (!state.showResults) {
+      return false;
+    }
+    return state.searchResults[type].items.slice(0, 5);
+  },
 };
 
 const actions = {
   async searchAll({ commit }, query) {
     try {
       const results = await search(query);
-      console.log(results);
       commit('SET_SEARCH_RESULTS', results.data);
     } catch (error) {
       console.error(error);
