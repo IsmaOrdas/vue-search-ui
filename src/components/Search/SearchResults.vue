@@ -3,7 +3,7 @@
   <div class="search-results__list-wrap">
     <p class="search-results__title">Albums</p>
     <ul data-testid="albums-list" class="search-results__list" v-if="hasAlbums">
-      <template v-for="(item, index) in fiveResults('albums')">
+      <template v-for="(item, index) in firstSearchResults('albums')">
         <li class="search-results__item flex flex--center-y" :key="index">
           <div class="search-results__img-wrap">
             <img role="presentation" class="search-results__img" :src="item.images[imageIndex].url" alt="album cover">
@@ -14,7 +14,7 @@
     </ul>
     <p class="search-results__title">Artists</p>
     <ul class="search-results__list" v-if="hasArtists">
-      <template v-for="(item, index) in fiveResults('artists')">
+      <template v-for="(item, index) in firstSearchResults('artists')">
         <li class="search-results__item flex flex--center-y" :key="index">
           <div class="search-results__img-wrap">
             <img role="presentation" class="search-results__img" :src="item.images[imageIndex].url" alt="artist photo">
@@ -25,7 +25,7 @@
     </ul>
     <p class="search-results__title">Tracks</p>
     <ul class="search-results__list" v-if="hasTracks">
-      <template v-for="(item, index) in fiveResults('tracks')">
+      <template v-for="(item, index) in firstSearchResults('tracks')">
         <li class="search-results__item" :key="index">
           <span>{{ item.name }}</span>
           <time class="search-results__track-duration"> {{ formatTime(item.duration_ms) }}</time>
@@ -52,7 +52,7 @@ export default {
     ...mapGetters([
       'searchResults',
       'showResults',
-      'fiveResults',
+      'firstSearchResults',
     ]),
     hasAlbums() {
       return this.searchResults && this.searchResults.albums ? Object.keys(this.searchResults.albums).length : null;

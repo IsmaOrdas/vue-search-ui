@@ -9,7 +9,7 @@ const state = {
 const getters = {
   searchResults: (state) => state.searchResults,
   showResults: (state) => state.showResults,
-  fiveResults: (state) => (type) => {
+  firstSearchResults: (state) => (type) => {
     if (!state.showResults) {
       return false;
     }
