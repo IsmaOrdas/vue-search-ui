@@ -22,6 +22,7 @@ const actions = {
     try {
       const results = await search(query);
       commit('SET_SEARCH_RESULTS', results.data);
+      commit('TOGGLE_SHOW_RESULTS');
     } catch (error) {
       console.error(error);
     }

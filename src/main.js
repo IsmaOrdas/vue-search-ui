@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import axios from 'axios';
+import { requestToken } from '@/api/token.api';
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -26,5 +27,11 @@ Vue.directive('click-outside', {
 new Vue({
   router,
   store,
+  created() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      requestToken();
+    }
+  },
   render: (h) => h(App),
 }).$mount('#app');

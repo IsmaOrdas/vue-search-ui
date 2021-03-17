@@ -27,9 +27,7 @@ export default {
       'toggleShowResults',
     ]),
     search(query) {
-      this.searchAll(query).then(() => {
-        this.toggleShowResults();
-      }).catch((error) => {
+      this.searchAll(query).catch((error) => {
         console.error(error);
       });
     },
