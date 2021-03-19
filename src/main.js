@@ -29,6 +29,7 @@ new Vue({
   store,
   created() {
     const token = localStorage.getItem('token');
+    console.log(token);
     if (!token) {
       requestToken();
     }
