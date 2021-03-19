@@ -6,7 +6,7 @@
       <template v-for="(item, index) in firstSearchResults('albums')">
         <li class="search-results__item flex flex--center-y" :key="index">
           <div class="search-results__img-wrap">
-            <img role="presentation" class="search-results__img" :src="item.images[imageIndex].url" alt="album cover">
+            <img role="presentation" class="search-results__img" :src="imageSrc(item)" alt="album cover">
           </div>
           <span>{{ item.name }}</span>
         </li>
@@ -17,7 +17,7 @@
       <template v-for="(item, index) in firstSearchResults('artists')">
         <li class="search-results__item flex flex--center-y" :key="index">
           <div class="search-results__img-wrap">
-            <img role="presentation" class="search-results__img" :src="item.images[imageIndex].url" alt="artist photo">
+            <img role="presentation" class="search-results__img" :src="imageSrc(item)" alt="artist photo">
           </div>
           <span>{{ item.name }}</span>
         </li>
@@ -68,6 +68,9 @@ export default {
     },
     formatTime() {
       return (miliseconds) => millisToMinutesAndSeconds(miliseconds);
+    },
+    imageSrc() {
+      return (item) => (item.images && item.images.length && this.imageIndex > 0) ? item.images[this.imageIndex].url : '';
     },
   },
   methods: {

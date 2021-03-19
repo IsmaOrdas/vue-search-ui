@@ -18,6 +18,7 @@ module.exports = {
         'prefer-destructuring': 'off',
         'prefer-template': 'off',
         'max-len': 'off',
+        'no-confusing-arrow': 'off'
     },
     overrides: [
         {
