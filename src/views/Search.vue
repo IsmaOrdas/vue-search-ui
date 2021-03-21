@@ -9,7 +9,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-import MainSearch from '@/components/MainSearch.vue';
+import MainSearch from '@/components/Search/MainSearch.vue';
 import SearchResults from '@/components/Search/SearchResults.vue';
 
 export default {

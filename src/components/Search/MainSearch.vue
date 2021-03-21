@@ -3,7 +3,7 @@
     <form class="search__form" action=""  v-on:submit.prevent.enter="submitSearch">
       <div class="search__input-wrap">
         <button class="search__btn" aria-label="Click to search" title="Search">
-          <img src="../assets/search.svg" alt="" width="20px">
+          <img src="src/assets/search.svg" alt="" width="20px">
         </button>
         <input
           aria-required="true"
@@ -39,7 +39,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '~@/styles/variables';
+@import '~@/styles/_variables.scss';
 
 .search {
   width: 100%;

@@ -1,4 +1,4 @@
-import MainSearch from "@/components/MainSearch";
+import MainSearch from "@/components/Search/MainSearch";
 import { mount } from '@vue/test-utils';
 
 describe('MainSearch', () => {
