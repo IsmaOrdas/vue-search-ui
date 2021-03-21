@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import mainSearch from '@/store/modules/mainSearch';
 import axios from 'axios';
+import httpClient from '@/api/http-client';
 
 Vue.use(Vuex);
 
@@ -34,7 +35,7 @@ export default new Vuex.Store({
       ).then((res) => {
         console.log('then requestToken');
         const token = res.data.access_token;
-        axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+        httpClient.defaults.headers.common['Authorization'] = 'Bearer ' + token;
         commit('SET_API_TOKEN_SEARCH', token);
       }).catch((error) => {
         console.error(error);

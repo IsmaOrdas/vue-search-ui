@@ -10,8 +10,8 @@ const getters = {
   searchResults: (state) => state.searchResults,
   showResults: (state) => state.showResults,
   firstSearchResults: (state) => (type) => {
-    if (!state.showResults) {
-      return false;
+    if (!state.searchResults) {
+      return [];
     }
     return state.searchResults[type].items.slice(0, 5);
   },

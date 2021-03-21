@@ -1,37 +1,24 @@
 <template>
 <div data-testid="search-results" class="search-results" v-bind:class="{'is-visible': showResults}">
   <div class="search-results__list-wrap">
-    <p class="search-results__title">Albums</p>
-    <ul data-testid="albums-list" class="search-results__list" v-if="hasAlbums">
-      <template v-for="(item, index) in firstSearchResults('albums')">
-        <li class="search-results__item flex flex--center-y" :key="index">
-          <div class="search-results__img-wrap">
-            <img role="presentation" class="search-results__img" :src="imageSrc(item)" alt="album cover">
-          </div>
-          <span>{{ item.name }}</span>
-        </li>
-      </template>
-    </ul>
-    <p class="search-results__title">Artists</p>
-    <ul class="search-results__list" v-if="hasArtists">
-      <template v-for="(item, index) in firstSearchResults('artists')">
-        <li class="search-results__item flex flex--center-y" :key="index">
-          <div class="search-results__img-wrap">
-            <img role="presentation" class="search-results__img" :src="imageSrc(item)" alt="artist photo">
-          </div>
-          <span>{{ item.name }}</span>
-        </li>
-      </template>
-    </ul>
-    <p class="search-results__title">Tracks</p>
-    <ul class="search-results__list" v-if="hasTracks">
-      <template v-for="(item, index) in firstSearchResults('tracks')">
-        <li class="search-results__item" :key="index">
-          <span>{{ item.name }}</span>
-          <time class="search-results__track-duration"> {{ formatTime(item.duration_ms) }}</time>
-        </li>
-      </template>
-    </ul>
+    <search-results-list
+      title="Albums"
+      :hasResults="hasAlbums"
+      :resultsList="firstSearchResults('albums')"
+      :imageIndex="imageIndex"
+    ></search-results-list>
+    <search-results-list
+        title="Artists"
+        :hasResults="hasArtists"
+        :resultsList="firstSearchResults('artists')"
+        :imageIndex="imageIndex"
+    ></search-results-list>
+    <search-results-list
+        title="Tracks"
+        :hasResults="hasTracks"
+        :resultsList="firstSearchResults('tracks')"
+        :imageIndex="imageIndex"
+    ></search-results-list>
   </div>
   <a class="search-results__see-more margin--none">See more results</a>
 </div>
@@ -39,10 +26,13 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { millisToMinutesAndSeconds } from '@/utils';
+import SearchResultsList from '@/components/Search/SearchResultsList.vue';
 
 export default {
   name: 'SearchResults',
+  components: {
+    SearchResultsList,
+  },
   data() {
     return {
       windowWidth: 0,
@@ -55,22 +45,16 @@ export default {
       'firstSearchResults',
     ]),
     hasAlbums() {
-      return this.searchResults && this.searchResults.albums ? Object.keys(this.searchResults.albums).length : null;
+      return this.searchResults && this.searchResults.albums ? !!Object.keys(this.searchResults.albums).length : false;
     },
     hasArtists() {
-      return this.searchResults && this.searchResults.artists ? Object.keys(this.searchResults.artists).length : null;
+      return this.searchResults && this.searchResults.artists ? !!Object.keys(this.searchResults.artists).length : false;
     },
     hasTracks() {
-      return this.searchResults && this.searchResults.tracks ? Object.keys(this.searchResults.tracks).length : null;
+      return this.searchResults && this.searchResults.tracks ? !!Object.keys(this.searchResults.tracks).length : false;
     },
     imageIndex() {
       return this.windowWidth <= 768 ? 2 : 1;
-    },
-    formatTime() {
-      return (miliseconds) => millisToMinutesAndSeconds(miliseconds);
-    },
-    imageSrc() {
-      return (item) => (item.images && item.images.length && this.imageIndex > 0) ? item.images[this.imageIndex].url : '';
     },
   },
   methods: {
@@ -108,14 +92,6 @@ export default {
     flex-direction: column;
   }
 
-  &__title {
-    color: $medium-gray;
-    font-size: 16px;
-    font-weight: 800;
-    margin: 0 0 4px 0;
-    text-align: left;
-  }
-
   &__list-wrap {
     height: 82vh;
     overflow: scroll;
@@ -125,43 +101,11 @@ export default {
     }
   }
 
-  &__list {
-    text-align: left;
-    margin-bottom: 1rem;
-  }
-
-  &__item {
-    border-radius: 4px;
-    cursor: pointer;
-    padding: 4px 0 4px 8px;
-
-    &:hover {
-      background-color: $dark-gray;
-    }
-  }
-
-  &__img-wrap {
-    display: inline-block;
-    width: 40px;
-  }
-
-  &__img {
-    border-radius: 4px;
-    height: 32px;
-    margin-right: 8px;
-  }
-
   &__see-more {
     color: $medium-gray;
     cursor: pointer;
     font-weight: 800;
     padding: 8px 0;
-  }
-
-  &__track-duration {
-    color: $medium-gray;
-    font-size: 14px;
-    padding-left: 4px;
   }
 }
 </style>

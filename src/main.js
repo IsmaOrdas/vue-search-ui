@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import httpClient from '@/api/http-client';
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -30,16 +29,6 @@ new Vue({
     console.log(this);
     if (!token) {
       this.$store.dispatch('saveApiTokenSearch');
-
-      httpClient.interceptors.response.use(
-        (response) => response,
-        (error) => {
-          if (error.response.status === 401) {
-            this.$store.dispatch('saveApiTokenSearch');
-            return Promise.reject(error);
-          }
-        },
-      );
     }
   },
   render: (h) => h(App),
