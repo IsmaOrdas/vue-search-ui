@@ -5,7 +5,7 @@
     <template v-for="(item, index) in resultsList">
       <li class="search-results__item flex flex--center-y" :key="index">
         <div v-if="item.images" class="search-results__img-wrap">
-          <img role="presentation" class="search-results__img" :src="imageSrc(item)" alt="album cover">
+          <img role="presentation" class="search-results__img" :src="imageSrc(item)" alt="">
         </div>
         <span>{{ item.name }}</span>
         <time v-if="item.duration_ms" class="search-results__track-duration"> {{ formatTime(item.duration_ms) }}</time>
