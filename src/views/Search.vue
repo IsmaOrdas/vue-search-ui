@@ -44,11 +44,12 @@ export default {
 @import '~@/styles/variables';
 
 .search-page {
-  height: 100vh;
+  height: 100%;
+
   &__inner {
-    @media (min-width: $desktop-small-bp) {
+    @media (min-width: $desktop-bp) {
       margin: 0 auto;
-      max-width: $desktop-small-bp;
+      max-width: $desktop-bp;
       padding-top: 1rem;
     }
   }

@@ -20,7 +20,7 @@
         :imageIndex="imageIndex"
     ></search-results-list>
   </div>
-  <a class="search-results__see-more margin--none">See more results</a>
+  <a href="#" class="search-results__see-more margin--none">See more search results</a>
 </div>
 </template>
 
@@ -79,11 +79,12 @@ export default {
 .search-results {
   box-shadow: 0 4px 2px -2px #eaeaea;
   display: none;
+  font-size: 1rem;
   padding: 1rem 1rem 0;
   height: 80vh;
   overflow: scroll;
 
-  @media (min-width: $desktop-small-bp) {
+  @media (min-width: $desktop-bp) {
     height: 50vh;
   }
 
@@ -96,7 +97,7 @@ export default {
     height: 82vh;
     overflow: scroll;
 
-    @media (min-width: $desktop-small-bp) {
+    @media (min-width: $desktop-bp) {
       height: 50vh;
     }
   }
@@ -104,7 +105,8 @@ export default {
   &__see-more {
     color: $medium-gray;
     cursor: pointer;
-    font-weight: 800;
+    display: inline-block;
+    font-weight: $bold-font;
     padding: 8px 0;
   }
 }

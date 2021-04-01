@@ -62,15 +62,15 @@ export default {
 
   &__title {
     color: $medium-gray;
-    font-size: 16px;
-    font-weight: 800;
-    margin: 0 0 4px 0;
+    font-size: 0.9em;
+    font-weight: $bold-font;
+    margin: 0 0 0.9em 0;
     text-align: left;
   }
 
   &__list {
     text-align: left;
-    margin-bottom: 1rem;
+    margin-bottom: 1em;
   }
 
   &__item {
@@ -96,7 +96,7 @@ export default {
 
   &__track-duration {
     color: $medium-gray;
-    font-size: 14px;
+    font-size: 0.8em;
     padding-left: 4px;
   }
 }

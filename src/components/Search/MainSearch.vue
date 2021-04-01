@@ -2,8 +2,8 @@
   <div class="search flex flex--center-x">
     <form class="search__form" action=""  v-on:submit.prevent.enter="submitSearch">
       <div class="search__input-wrap">
-        <button class="search__btn" aria-label="Click to search" title="Search">
-          <img src="@/assets/search.svg" alt="" width="20px">
+        <button class="search__btn" aria-label="Click to search" title="Search icon">
+          <img src="@/assets/search.svg" alt="search icon" width="20px">
         </button>
         <input
           aria-required="true"
@@ -45,6 +45,7 @@ export default {
   width: 100%;
 
   &__form {
+    font-size: 1rem;
     flex: 1;
   }
 
@@ -64,8 +65,8 @@ export default {
   }
 
   &__input {
-    border-bottom: 2px solid $light-gray;
-    font-size: 14px;
+    border-bottom: 2px solid $medium-gray;
+    font-size: 0.8em;
     height: 40px;
     line-height: 40px;
     width: 100%;

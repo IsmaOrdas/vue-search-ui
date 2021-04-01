@@ -4,6 +4,15 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 16px;
+
+  @media (min-width: $tablet-bp) {
+    font-size: 18px;
+  }
+
+}
+
 html,
 body {
   height: 100%;
@@ -15,7 +24,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  font-size: 18px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

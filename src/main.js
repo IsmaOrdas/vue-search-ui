@@ -26,7 +26,6 @@ new Vue({
   store,
   created() {
     const token = store.getters.apiTokenSearch;
-    console.log(this);
     if (!token) {
       this.$store.dispatch('saveApiTokenSearch');
     }
