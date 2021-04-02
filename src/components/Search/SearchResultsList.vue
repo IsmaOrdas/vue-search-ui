@@ -8,7 +8,7 @@
           <img role="presentation" class="search-results__img" :src="imageSrc(item)" alt="">
         </div>
         <span>{{ item.name }}</span>
-        <time v-if="item.duration_ms" class="search-results__track-duration"> {{ formatTime(item.duration_ms) }}</time>
+        <time v-if="item.duration_ms" class="search-results__track-duration" :datetime="formatTime(item.duration_ms)"> {{ formatTime(item.duration_ms) }}</time>
       </li>
     </template>
   </ul>

@@ -1,7 +1,7 @@
 <template>
   <section class="search-page">
     <div class="search-page__inner flex flex--col">
-      <main-search v-on:search-query="search"></main-search>
+      <search-form v-on:search-query="search"></search-form>
       <search-results v-click-outside="hideResults"></search-results>
     </div>
   </section>
@@ -9,13 +9,13 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-import MainSearch from '@/components/Search/MainSearch.vue';
+import SearchForm from '@/components/Search/SearchForm.vue';
 import SearchResults from '@/components/Search/SearchResults.vue';
 
 export default {
   name: 'Search',
   components: {
-    MainSearch,
+    SearchForm,
     SearchResults,
   },
   computed: {
