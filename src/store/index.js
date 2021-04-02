@@ -24,7 +24,7 @@ export default new Vuex.Store({
       params.append('grant_type', 'client_credentials');
 
       axios.post(
-        process.env.VUE_APP_TOKEN_URL,
+        'https://accounts.spotify.com/api/token',
         params,
         {
           headers: {
