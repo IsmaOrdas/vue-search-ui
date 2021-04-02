@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const httpClient = axios.create({
-  baseURL: 'https://api.spotify.com/v1',
+  baseURL: process.env.VUE_APP_API_URL,
   timeout: 2000,
   headers: {
     'Content-Type': 'application/json',
