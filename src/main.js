@@ -25,7 +25,8 @@ new Vue({
   router,
   store,
   created() {
-    console.log(process.env.VUE_APP_HOST);
+    const html = document.documentElement;
+    html.setAttribute('lang', 'en');
     const token = store.getters.apiTokenSearch;
     if (!token) {
       this.$store.dispatch('saveApiTokenSearch');

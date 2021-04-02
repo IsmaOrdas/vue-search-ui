@@ -4,5 +4,5 @@ module.exports = {
       entry: 'src/main.js',
       title: 'Search UI',
     },
-  },
+  }
 };
