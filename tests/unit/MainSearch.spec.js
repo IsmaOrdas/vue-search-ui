@@ -1,4 +1,4 @@
-import MainSearch from "@/components/Search/SearchForm";
+import MainSearch from '@/components/Search/SearchForm';
 import { mount } from '@vue/test-utils';
 
 describe('MainSearch', () => {
@@ -7,7 +7,7 @@ describe('MainSearch', () => {
     const input = wrapper.find('[data-testid="main-search-input"]');
 
     input.setValue('Frank Ocean');
-    input.trigger('keyup', {key: 'Enter'});
+    input.trigger('keyup', { key: 'Enter' });
 
     const formSubmittedCalls = wrapper.emitted('search-query');
     expect(formSubmittedCalls).toHaveLength(1);
