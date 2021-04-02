@@ -9,9 +9,11 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     apiTokenSearch: null,
+    apiTokenRequest: 'Basic MmJiM2M3MjI4MGUzNGEyZGE2MWI0N2M1Y2M4N2MxOWY6YmIyNDk3MWJmNmM5NDc1YWI2MjFjZTE2ODQzZDNjYmM=',
   },
   getters: {
     apiTokenSearch: (state) => state.apiTokenSearch,
+    apiTokenRequest: (state) => state.apiTokenRequest,
   },
   mutations: {
     SET_API_TOKEN_SEARCH: (state, token) => {
@@ -19,7 +21,7 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    saveApiTokenSearch: ({ commit }) => {
+    saveApiTokenSearch: ({ commit, state }) => {
       const params = new URLSearchParams();
       params.append('grant_type', 'client_credentials');
 
@@ -29,11 +31,10 @@ export default new Vuex.Store({
         {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
-            Authorization: process.env.VUE_APP_TOKEN_REQUEST,
+            Authorization: state.apiTokenRequest,
           },
         },
       ).then((res) => {
-        console.log('then requestToken');
         const token = res.data.access_token;
         httpClient.defaults.headers.common['Authorization'] = 'Bearer ' + token;
         commit('SET_API_TOKEN_SEARCH', token);
