@@ -1,6 +1,6 @@
 <template>
   <div class="search flex flex--center-x">
-    <form class="search__form" action="" v-on:submit.prevent.enter="submitSearch">
+    <form data-testid="search-form" class="search__form" action="" v-on:submit.prevent.enter="submitSearch">
       <div class="search__input-wrap">
         <button class="search__btn" aria-label="Click to search" title="Search">
           <img src="@/assets/search.svg" alt="search icon" width="20px" height="20px">
@@ -8,7 +8,7 @@
         <input
           aria-label="Search input"
           aria-required="true"
-          data-testid="main-search-input"
+          data-testid="search-input"
           id="search-input"
           class="search__input input input--icon-left"
           type="text"
