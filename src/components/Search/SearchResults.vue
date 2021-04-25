@@ -1,5 +1,5 @@
 <template>
-<div data-testid="search-results" class="search-results" v-bind:class="{'is-visible': showResults}">
+<div data-test-id="search-results" class="search-results" v-bind:class="{'is-visible': showResults}">
   <div class="search-results__list-wrap">
     <search-results-list
       title="Albums"

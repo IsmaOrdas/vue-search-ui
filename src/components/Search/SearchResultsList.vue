@@ -1,7 +1,7 @@
 <template>
 <div>
   <p class="search-results__title">{{ title }}</p>
-  <ul data-testid="albums-list" class="search-results__list" v-if="hasResults">
+  <ul data-test-id="albums-list" class="search-results__list" v-if="hasResults">
     <template v-for="(item, index) in resultsList">
       <li class="search-results__item flex flex--center-y" :key="index">
         <div v-if="item.images" class="search-results__img-wrap">
