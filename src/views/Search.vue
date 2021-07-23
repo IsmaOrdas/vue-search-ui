@@ -46,11 +46,14 @@ export default {
 .search-page {
   height: 100%;
 
+  @media (min-width: $desktop-bp) {
+    padding-top: 1rem;
+  }
+
   &__inner {
     @media (min-width: $desktop-bp) {
       margin: 0 auto;
       max-width: $desktop-bp;
-      padding-top: 1rem;
     }
   }
 }

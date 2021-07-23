@@ -61,6 +61,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '~@/styles/variables';
+@import '~@/styles/utils';
 
 .search-results {
 
@@ -93,18 +94,12 @@ export default {
 	}
 
 	&__img {
-		border-radius: 4px;
-		height: 32px;
-		margin-right: 8px;
-		width: 32px;
+		@extend %img-box;
 	}
 
 	&__img--empty {
 		background-color: $light-gray;
-		border-radius: 4px;
-		height: 32px;
-		margin-right: 8px;
-		width: 32px;
+		@extend %img-box;
 	}
 
 	&__track-duration {

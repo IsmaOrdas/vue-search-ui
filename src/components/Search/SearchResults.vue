@@ -20,7 +20,7 @@
         :imageIndex="imageIndex"
     ></search-results-list>
   </div>
-  <a href="#" class="search-results__see-more margin--none">See more search results</a>
+  <a href="#" class="search-results__see-more margin--none">See more</a>
 </div>
 </template>
 

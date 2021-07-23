@@ -17,6 +17,10 @@
     align-items: center;
   }
 
+  &--separate {
+    justify-content: space-between;
+  }
+
 }
 
 .margin {
@@ -25,3 +29,10 @@
   }
 }
 
+%img-box {
+  background-color: $light-gray;
+  border-radius: 4px;
+  height: 32px;
+  margin-right: 8px;
+  width: 32px;
+}
