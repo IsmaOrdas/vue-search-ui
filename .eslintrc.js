@@ -9,7 +9,7 @@ module.exports = {
     'plugin:jest/recommended',
   ],
   plugins: [
-    'cypress'
+    'cypress',
   ],
   parserOptions: {
     parser: 'babel-eslint',
@@ -25,6 +25,7 @@ module.exports = {
     'no-confusing-arrow': 'off',
     'dot-notation': 'off',
     'no-cycle': 'off',
+    'no-tabs': 'off',
   },
   overrides: [
     {
